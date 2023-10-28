@@ -96,11 +96,11 @@ export default function RandomNumberCard() {
       </div>
 
       {state.showPrizePopup && (
-        <Modal show={state.showPrizePopup} onHide={closePrizePopup} size="lg">
+        <Modal show={state.showPrizePopup} onHide={closePrizePopup} size="xl">
           <Modal.Header closeButton>
             <Modal.Title>Congratulations!</Modal.Title>
           </Modal.Header>
-          <Modal.Body style={{fontSize: "340px", textAlign: "center"}}>{currentWinningNumber}</Modal.Body>
+          <Modal.Body style={{fontSize: "540px", textAlign: "center"}}>{currentWinningNumber}</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={closePrizePopup}>
               Close

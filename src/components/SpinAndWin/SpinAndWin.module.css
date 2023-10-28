@@ -9,6 +9,9 @@
   cursor: pointer;
   height: 100%;
 }
+.showPrizePopup{
+  
+}
 .cardbody{
   display: flex;
   justify-content: center;
