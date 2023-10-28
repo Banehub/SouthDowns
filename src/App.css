@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+.golf-course {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.golfer {
+  width: 50px;
+  height: 50px;
+  background-color: #FFD700; /* Yellow */
+  position: absolute;
+  bottom: 0;
+}
+
+.golf-ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+}
+
+.hole {
+  width: 30px;
+  height: 30px;
+  background-color: #228B22; /* Forest green */
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes roll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(90vw);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
