@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import styles from './SpinAndWin.module.css';
-
+import React, { useState, useEffect } from "react";
+import styles from "./SpinAndWin.module.css";
+import { Modal, Button } from "react-bootstrap";
 export default function RandomNumberCard() {
   const [state, setState] = useState({
     winningNumbers: [],
@@ -63,56 +63,50 @@ export default function RandomNumberCard() {
   };
 
   const currentPrize = state.prizes[state.prizes.length - state.spinsRemaining];
-  const currentWinningNumber = state.winningNumbers[state.winningNumbers.length - 1];
-  
+  const currentWinningNumber =
+    state.winningNumbers[state.winningNumbers.length - 1];
+
   function getCountdownNumberColor(countdown) {
     if (countdown === 5) {
-      return 'red';
+      return "red";
     } else if (countdown === 4) {
-      return 'yellow';
+      return "yellow";
     } else if (countdown === 3) {
-      return 'pink';
+      return "pink";
     } else if (countdown === 2) {
-      return 'green';
+      return "green";
     }
-    return 'black'; // Default color for 1
+    return "black"; // Default color for 1
   }
 
   return (
-    <div className={styles.container}>
+    <div style={{height: "100%"}} className={styles.containerCustom} onClick={generateRandomNumber}>
       <div className={styles.cardbody}>
-        {state.isCounting ? (
-          <p className={styles.countdowntimer} style={{ color: getCountdownNumberColor(state.countdown) }}>
+        {state.isCounting && (
+          <p
+            className={styles.countdowntimer}
+            style={{ color: getCountdownNumberColor(state.countdown) }}
+          >
             {state.countdown}
           </p>
-        ) : (
-          <button
-            className={`${styles.btn} ${styles.btnprimary}`}
-            onClick={generateRandomNumber}
-            disabled={state.isCounting || state.spinsRemaining === 0}
-          >
-            {/* S P I N */}
-          </button>
         )}
         <p className={styles.cardtext}>
-          {state.spinsRemaining === 0
-            ? 'All spins completed!'
-            : null}
+          {state.spinsRemaining === 0 ? "All spins completed!" : null}
         </p>
       </div>
 
       {state.showPrizePopup && (
-        <div className={styles.overlay}>
-          <div className={styles.popup}>
-            <span className={styles.closeButton} onClick={closePrizePopup}>
-              &times;
-            </span>
-            <div className={styles.popupContent}>
-              <h2 className={styles.Header}>Congratulations!</h2>
-              <p className={styles.ptext}>{currentWinningNumber}</p>
-            </div>
-          </div>
-        </div>
+        <Modal show={state.showPrizePopup} onHide={closePrizePopup} size="lg">
+          <Modal.Header closeButton>
+            <Modal.Title>Congratulations!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body style={{fontSize: "340px", textAlign: "center"}}>{currentWinningNumber}</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={closePrizePopup}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       )}
     </div>
   );
