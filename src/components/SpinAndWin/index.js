@@ -100,7 +100,7 @@ export default function RandomNumberCard() {
           <Modal.Header closeButton>
             <Modal.Title>Congratulations!</Modal.Title>
           </Modal.Header>
-          <Modal.Body style={{fontSize: "540px", textAlign: "center"}}>{currentWinningNumber}</Modal.Body>
+          <Modal.Body style={{fontSize: "440px", textAlign: "center"}}>{currentWinningNumber}</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={closePrizePopup}>
               Close
